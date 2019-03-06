@@ -14,9 +14,11 @@ app.get('/', (req, res) => {
     res.send('ok')
 })
 
-app.post('/dingding', (req, res) => {
-    console.log(req.body)
-    res.send('ok')
-})
+app.post('/dingding', async (req, res) => {
+  const data = req.body
+  const { username } = data.actor;
+  const { fullName, links } = data.repository;
+  console.log(links, data.push)
 
+})
 app.listen(3000, () => console.log('Example app listening on port 3000!'))
