@@ -7,7 +7,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/dingding', (req, res) => {
-    console.log(req)
+    console.log(req.body)
     res.send('ok')
 })
 
