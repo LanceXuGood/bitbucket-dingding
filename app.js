@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const requset = require('superagent')
+const request = require('superagent')
 const app = express()
 
 // parse application/x-www-form-urlencoded
@@ -17,8 +17,8 @@ app.get('/', (req, res) => {
 
 app.post('/dingding', async (req, res) => {
   const data = req.body
-  const { username } = data.actor;
-  const { fullName, links } = data.repository;
+  const { username } = data.actor
+  const { fullName, links } = data.repository
   request
     .post('https://oapi.dingtalk.com/robot/send?access_token=b57e5b4ed545bb728fc4c4412a8c669eee17e5b3b2a164653cbf1b9653d5e4f1')
     .send({
