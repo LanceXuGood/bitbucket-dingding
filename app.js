@@ -19,6 +19,8 @@ app.post('/dingding', async (req, res) => {
   const data = req.body
   const { username } = data.actor
   const { fullName, links } = data.repository
+  const { changes } = data.push
+  console.log(fullName, username, links, changes)
   await request
     .post('https://oapi.dingtalk.com/robot/send?access_token=b57e5b4ed545bb728fc4c4412a8c669eee17e5b3b2a164653cbf1b9653d5e4f1')
     .send({
