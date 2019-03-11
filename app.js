@@ -27,7 +27,7 @@ app.post('/dingding', async (req, res) => {
   console.log(branch.target)
   if (changes) {
     await request
-    .post('https://oapi.dingtalk.com/robot/send?access_token=b57e5b4ed545bb728fc4c4412a8c669eee17e5b3b2a164653cbf1b9653d5e4f1')
+    .post('https://oapi.dingtalk.com/robot/send?access_token=2d712b6b2ddfec262954ce18f9c3878cec3b805baf7f13262e15affcc442139f')
     .send({
         "msgtype": "markdown",
         "markdown": {
