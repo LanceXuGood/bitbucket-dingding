@@ -27,7 +27,7 @@ app.post('/dingding', async (req, res) => {
   const target = branch.target
   // https://code.learnta.cn/projects/TES/repos/dingdingtalk/commits/800a46cfa75847923952c483577f41c721836d85
   const commitUrl = `https://code.learnta.cn/projects/${ownerName}/repos/${slug}/commits/${target.commit}`
-  console.log(data)
+  console.log(branch)
   if (changes) {
     await request
     .post('https://oapi.dingtalk.com/robot/send?access_token=2d712b6b2ddfec262954ce18f9c3878cec3b805baf7f13262e15affcc442139f')
