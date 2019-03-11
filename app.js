@@ -32,7 +32,7 @@ app.post('/dingding', async (req, res) => {
         "msgtype": "markdown",
         "markdown": {
             "title":fullName,
-            "text": `# Push\n **${username}** 推送新变动到 **${branch.name}**,\n > [链接地址](${href})`
+            "text": `# Push\n 程序猿: **${username}** 推送新变动到 **${branch.name}** 分支,\n > [链接地址](${href})`
         }
     })
     .set('Accept', 'application/json')
