@@ -26,7 +26,7 @@ app.post('/dingding', async (req, res) => {
   const branch = changes[0].new
   const target = branch.target
   // https://code.learnta.cn/projects/TES/repos/dingdingtalk/commits/800a46cfa75847923952c483577f41c721836d85
-  const commitUrl = `https://code.learnta.cn/projects/${ownerName}/repos/${slug}/commits/${target.commit}`
+  const commitUrl = `https://code.learnta.cn/projects/${ownerName}/repos/${slug}/commits/${target.hash}`
   console.log(branch)
   if (changes) {
     await request
