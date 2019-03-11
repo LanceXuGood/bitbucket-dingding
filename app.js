@@ -18,12 +18,15 @@ app.get('/', (req, res) => {
 app.post('/dingding', async (req, res) => {
   const data = req.body
   const { username } = data.actor
-  const { fullName, links } = data.repository
+  const { fullName, links, ownerName, slug } = data.repository
   const { changes } = data.push
   // { self: [ { href: 'https://code.learnta.cn/projects/TES/repos/dingdingtalk/browse' } ] }
   const { href } = links.self[0]
   // 分支管理
   const branch = changes[0].new
+  const target = branch.target
+  // https://code.learnta.cn/projects/TES/repos/dingdingtalk/commits/800a46cfa75847923952c483577f41c721836d85
+  const commitUrl = `https://code.learnta.cn/projects/${ownerName}/repos/${slug}/commits/${target.commit}`
   console.log(data)
   if (changes) {
     await request
@@ -32,7 +35,7 @@ app.post('/dingding', async (req, res) => {
         "msgtype": "markdown",
         "markdown": {
             "title":fullName,
-            "text": `# Push\n 程序猿: **${username}** 推送新变动到 **${branch.name}** 分支\n > [链接地址](${href})`
+            "text": `# Push\n 程序猿: **${username}** 推送新变动到 **${branch.name}** 分支\n > [点击查看详细内容](${href})`
         }
     })
     .set('Accept', 'application/json')
