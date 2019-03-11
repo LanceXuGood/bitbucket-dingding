@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 app.post('/dingding', async (req, res) => {
   const data = req.body
   const { username } = data.actor
-  const { fullName, links, ownerName, slug, projects } = data.repository
+  const { fullName, links, ownerName, slug, project } = data.repository
   const { changes } = data.push
   // { self: [ { href: 'https://code.learnta.cn/projects/TES/repos/dingdingtalk/browse' } ] }
   const { href } = links.self[0]
