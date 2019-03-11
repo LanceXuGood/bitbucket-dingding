@@ -20,23 +20,26 @@ app.post('/dingding', async (req, res) => {
   const { username } = data.actor
   const { fullName, links } = data.repository
   const { changes } = data.push
-  console.log('data', data)
-  console.log('links', links)
-  console.log('changes', changes)
-  await request
+  // { self: [ { href: 'https://code.learnta.cn/projects/TES/repos/dingdingtalk/browse' } ] }
+  const { href } = links.self[0]
+  // 分支管理
+  const branch = changes[0].new
+  console.log(branch.target)
+  if (changes) {
+    await request
     .post('https://oapi.dingtalk.com/robot/send?access_token=b57e5b4ed545bb728fc4c4412a8c669eee17e5b3b2a164653cbf1b9653d5e4f1')
     .send({
         "msgtype": "markdown",
         "markdown": {
             "title":fullName,
-            "text": `${username} 推送新变动到 xxx`
+            "text": `${username} 推送新变动到 ${branch.name}, 链接地址：${href}`
         }
     })
     .set('Accept', 'application/json')
     .then(res => {
         
     });
-  
+  }
 
 })
 app.listen(3000, () => console.log('Example app listening on port 3000!'))
