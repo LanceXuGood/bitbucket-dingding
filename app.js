@@ -24,7 +24,7 @@ app.post('/dingding', async (req, res) => {
   const { href } = links.self[0]
   // 分支管理
   const branch = changes[0].new
-  console.log(branch.target)
+  console.log(data, branch.target)
   if (changes) {
     await request
     .post('https://oapi.dingtalk.com/robot/send?access_token=2d712b6b2ddfec262954ce18f9c3878cec3b805baf7f13262e15affcc442139f')
@@ -32,7 +32,7 @@ app.post('/dingding', async (req, res) => {
         "msgtype": "markdown",
         "markdown": {
             "title":fullName,
-            "text": `${username} 推送新变动到 ${branch.name}, 链接地址：${href}`
+            "text": `#Push \n **${username}** 推送新变动到 **${branch.name}**,\n > \n [链接地址]${href}`
         }
     })
     .set('Accept', 'application/json')
